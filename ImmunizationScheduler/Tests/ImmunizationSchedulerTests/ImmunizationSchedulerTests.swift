@@ -11,8 +11,11 @@ final class ImmunizationSchedulerTests: XCTestCase {
     }
     
     func testCreateRequest() {
-        let request: ImmunizationScheduleRequest! = ImmunizationScheduleRequest()
+        let request: ImmunizationScheduleRequest! = ImmunizationScheduleRequest(requestDate: Date(), birthDate: Date())
         XCTAssertNotNil(request)
+        XCTAssertNotNil(request.requestDate)
+        XCTAssertNotNil(request.birthDate)
+        
     }
 
 

@@ -9,4 +9,8 @@ import Foundation
 
 struct ImmunizationScheduleRequest {
     
+    let requestDate: Date
+    let birthDate: Date
+    
+    
 }
