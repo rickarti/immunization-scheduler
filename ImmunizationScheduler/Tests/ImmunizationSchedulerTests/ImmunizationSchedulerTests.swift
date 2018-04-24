@@ -3,24 +3,16 @@ import XCTest
 
 final class ImmunizationSchedulerTests: XCTestCase {
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(ImmunizationScheduler().text, "Hello, World!")
-    }
-    
     func testCreateRequest() {
-        let request: ImmunizationScheduleRequest! = ImmunizationScheduleRequest(requestDate: Date(), birthDate: Date())
+        let request: ImmunizationScheduleRequest! = ImmunizationScheduleRequest(requestDate: Date(), birthDate: Date(), givenDoses: [GivenDose]())
         XCTAssertNotNil(request)
         XCTAssertNotNil(request.requestDate)
         XCTAssertNotNil(request.birthDate)
-        
+        XCTAssertNotNil(request.givenDoses)
     }
 
 
     static var allTests = [
-        ("testExample", testExample),
         ("testCreateRequest", testCreateRequest),
     ]
 }
