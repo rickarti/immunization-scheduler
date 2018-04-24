@@ -10,6 +10,13 @@ final class ImmunizationSchedulerTests: XCTestCase {
         XCTAssertNotNil(request.birthDate)
         XCTAssertNotNil(request.givenDoses)
     }
+    
+    func testSchedule() {
+        let immunizationScheduler = ImmunizationScheduler()
+        let request: ImmunizationScheduleRequest = ImmunizationScheduleRequest(requestDate: Date(), birthDate: Date(), givenDoses: [GivenDose]())
+        let response = immunizationScheduler.schedule(request: request)
+        XCTAssertNotNil(response)
+    }
 
 
     static var allTests = [

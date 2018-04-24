@@ -1,3 +1,9 @@
+
+
 struct ImmunizationScheduler {
-    var text = "Hello, World!"
+    
+    public func schedule(request: ImmunizationScheduleRequest) -> ImmunizationScheduleResponse {
+        return ImmunizationScheduleResponse()
+    }
+    
 }
