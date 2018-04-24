@@ -12,5 +12,4 @@ struct ImmunizationScheduleRequest {
     let requestDate: Date
     let birthDate: Date
     let givenDoses: [GivenDose]
-    
 }
