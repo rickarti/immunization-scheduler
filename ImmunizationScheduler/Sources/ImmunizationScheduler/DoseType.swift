@@ -15,5 +15,5 @@ enum DoseType {
     case fifthDose
     case booster
     case annualVaccination
-    case invlidEarly
+    case invalidEarly
 }
