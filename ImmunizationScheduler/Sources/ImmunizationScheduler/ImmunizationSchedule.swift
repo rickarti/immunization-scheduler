@@ -9,4 +9,8 @@ import Foundation
 
 struct ImmunizationSchedule {
     
-}
+    let vaccineType: VaccineType
+    let seriesStatus: SeriesStatus = .notIndicated
+    let givenDoses: [GivenDose] = [GivenDose]()
+    let scheduledDoses:[ScheduledDose] = [ScheduledDose]()
+    }
