@@ -9,4 +9,6 @@ import Foundation
 
 struct ImmunizationScheduleResponse {
     
+    let currentDate: Date = Date()
+    let immunizationSchedules: [ImmunizationSchedule] = [ImmunizationSchedule]()
 }
