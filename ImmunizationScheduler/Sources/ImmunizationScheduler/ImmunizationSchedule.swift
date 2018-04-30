@@ -13,4 +13,4 @@ struct ImmunizationSchedule {
     let seriesStatus: SeriesStatus = .notIndicated
     let givenDoses: [GivenDose] = [GivenDose]()
     let scheduledDoses:[ScheduledDose] = [ScheduledDose]()
-    }
+}
