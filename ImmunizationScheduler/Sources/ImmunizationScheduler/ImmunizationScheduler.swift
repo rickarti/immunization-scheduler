@@ -8,10 +8,9 @@ struct ImmunizationScheduler {
         
         response.immunizationSchedules += HepBDoseScheduler().immunizationSchedule(request: request, response: response)
         response.immunizationSchedules += RVDoseScheduler().immunizationSchedule(request: request, response: response)
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .DTAP))
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .TDAP))
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .HI_B))
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .PCV_13))
+        response.immunizationSchedules += DtapTdapDoseScheduler().immunizationSchedule(request: request, response: response)
+        response.immunizationSchedules += HibDoseScheduler().immunizationSchedule(request: request, response: response)
+        response.immunizationSchedules += PCV13DoseScheduler().immunizationSchedule(request: request, response: response)
         response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .IPV))
         response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .INFLUENZA))
         response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .MMR))
