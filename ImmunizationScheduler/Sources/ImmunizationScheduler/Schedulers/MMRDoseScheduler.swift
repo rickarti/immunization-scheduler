@@ -1,15 +1,15 @@
 //
-//  RVDoseScheduler.swift
+//  MMRDoseScheduler.swift
 //  ImmunizationScheduler
 //
-//  Created by Rick Johnson on 5/1/18.
+//  Created by Richard Johnson on 5/1/18.
 //
 
 import Foundation
 
-class RVDoseScheduler: DoseScheduler {
+class MMRDoseScheduler: DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest, response: ImmunizationScheduleResponse) -> [ImmunizationSchedule] {
-        return [ImmunizationSchedule(vaccineType: .RV)]
+        return [ImmunizationSchedule(vaccineType: .MMR)]
     }
 }
