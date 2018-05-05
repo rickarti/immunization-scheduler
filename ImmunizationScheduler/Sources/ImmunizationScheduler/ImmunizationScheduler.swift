@@ -14,10 +14,10 @@ struct ImmunizationScheduler {
         response.immunizationSchedules += IPVDoseScheduler().immunizationSchedule(request: request, response: response)
         response.immunizationSchedules += InfluenzaDoseScheduler().immunizationSchedule(request: request, response: response)
         response.immunizationSchedules += MMRDoseScheduler().immunizationSchedule(request: request, response: response)
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .VAR))
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .HEP_A))
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .MENINGOCOCCAL))
-        response.immunizationSchedules.append(ImmunizationSchedule(vaccineType: .HPV))
+        response.immunizationSchedules += VarDoseScheduler().immunizationSchedule(request: request, response: response)
+        response.immunizationSchedules += HepADoseScheduler().immunizationSchedule(request: request, response: response)
+        response.immunizationSchedules += MeningococcalDoseScheduler().immunizationSchedule(request: request, response: response)
+        response.immunizationSchedules += HpvDoseScheduler().immunizationSchedule(request: request, response: response)
         
         return response
     }
