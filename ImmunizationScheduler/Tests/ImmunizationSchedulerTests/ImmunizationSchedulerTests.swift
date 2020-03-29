@@ -1,20 +1,44 @@
 import XCTest
+
 @testable import ImmunizationScheduler
 
 final class ImmunizationSchedulerTests: XCTestCase {
     
-    func testCreateRequest() {
-        let request: ImmunizationScheduleRequest! = ImmunizationScheduleRequest(requestDate: Date(), birthDate: Date(), givenDoses: [GivenDose]())
+    func testRequestDates() {
+        let request: ImmunizationScheduleRequest = ImmunizationScheduleRequestBuilder(
+            birthDate: date(10, 15, 2020),
+            requestDate: date(11, 15, 2020))
+            .build()
+        
         XCTAssertNotNil(request)
-        XCTAssertNotNil(request.requestDate)
         XCTAssertNotNil(request.birthDate)
-        XCTAssertNotNil(request.givenDoses)
+        
+        let calendar = Calendar.current
+        let birthDateComponents = calendar.dateComponents([.year, .month, .day], from: request.birthDate)
+        XCTAssertEqual(10, birthDateComponents.month!)
+        XCTAssertEqual(15, birthDateComponents.day!)
+        XCTAssertEqual(2020, birthDateComponents.year!)
+        
+        
+        XCTAssertNotNil(request.requestDate)
+        let requestDateComponents = calendar.dateComponents([.year, .month, .day], from: request.requestDate)
+        XCTAssertEqual(11, requestDateComponents.month!)
+        XCTAssertEqual(15, requestDateComponents.day!)
+        XCTAssertEqual(2020, requestDateComponents.year!)
+        
+        print("birthDate: \(request.birthDate)")
+        print("requestDate: \(request.requestDate)")
     }
     
     func testSchedule() {
         let immunizationScheduler = ImmunizationScheduler()
-        let request: ImmunizationScheduleRequest = ImmunizationScheduleRequest(requestDate: Date(), birthDate: Date(), givenDoses: [GivenDose]())
+        
+        let request: ImmunizationScheduleRequest = ImmunizationScheduleRequestBuilder(
+            birthDate: date(10, 15, 2020),
+            requestDate: date(11, 15, 2020))
+            .build()
         let response = immunizationScheduler.schedule(request: request)
+        
         XCTAssertNotNil(response)
         XCTAssertEqual(13, response.immunizationSchedules.count)
         
@@ -32,9 +56,4 @@ final class ImmunizationSchedulerTests: XCTestCase {
         XCTAssertEqual(.MENINGOCOCCAL, response.immunizationSchedules[11].vaccineType)
         XCTAssertEqual(.HPV, response.immunizationSchedules[12].vaccineType)
     }
-
-
-    static var allTests = [
-        ("testCreateRequest", testCreateRequest),
-    ]
 }
