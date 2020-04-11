@@ -9,7 +9,7 @@ import Foundation
 
 class RVDoseScheduler: DoseScheduler {
     
-    func immunizationSchedule(request: ImmunizationScheduleRequest, response: ImmunizationScheduleResponse) -> [ImmunizationSchedule] {
+    func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
         return [ImmunizationSchedule(vaccineType: .RV)]
     }
 }

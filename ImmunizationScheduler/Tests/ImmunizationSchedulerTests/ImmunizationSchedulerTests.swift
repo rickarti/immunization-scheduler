@@ -56,4 +56,8 @@ final class ImmunizationSchedulerTests: XCTestCase {
         XCTAssertEqual(.MENINGOCOCCAL, response.immunizationSchedules[11].vaccineType)
         XCTAssertEqual(.HPV, response.immunizationSchedules[12].vaccineType)
     }
+    
+    func test_givenDoseSatisfiesMultipleSchedules_noDoseContamination() {
+        // TBD
+    }
 }

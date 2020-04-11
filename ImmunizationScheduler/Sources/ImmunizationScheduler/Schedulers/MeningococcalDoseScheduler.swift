@@ -8,8 +8,7 @@
 import Foundation
 
 class MeningococcalDoseScheduler: DoseScheduler {
-    
-    func immunizationSchedule(request: ImmunizationScheduleRequest, response: ImmunizationScheduleResponse) -> [ImmunizationSchedule] {
+    func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
         return [ImmunizationSchedule(vaccineType: .MENINGOCOCCAL)]
     }
 }
