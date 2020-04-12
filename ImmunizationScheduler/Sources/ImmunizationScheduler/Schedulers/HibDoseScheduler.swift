@@ -10,7 +10,7 @@ import Foundation
 class HibDoseScheduler: DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
-        return [ImmunizationSchedule(vaccineType: .HI_B)]
+        return [ImmunizationSchedule(vaccineType: .HI_B, scheduledDoses: [])]
     }
     
 }

@@ -18,43 +18,11 @@ class HepADoseSchedulerTests: XCTestCase {
         XCTAssertEqual(hepASchedule.vaccineType, VaccineType.HEP_A)
         XCTAssertEqual(2, hepASchedule.scheduledDoses.count)
         
-        
-        
+        assertDose(hepASchedule.scheduledDoses[0], start:(1,1,2021))
+        assertDose(hepASchedule.scheduledDoses[1], start:(7,1,2021))
 
-//            List<DueDose> hepADoses = new HepADoseScheduler().immunizationSchedule(request).get(0).getScheduledDoses();
-
-        
-        //            assertThat(hepADoses.size(), is(2));
 //            assertDose(hepADoses.get(0), DoseType.FIRST_DOSE, "1/1/2017", "1/1/2018", "1/1/2017", null, VaccineType.HEP_A, false);
 //            assertDose(hepADoses.get(1), DoseType.SECOND_DOSE, "7/1/2017", "7/1/2018", "7/1/2017", null, VaccineType.HEP_A, false);
-        
-        
-        // let response = ImmunizationScheduleResponse()
-        // let scheduler = HepADoseScheduler()
-        
-
-//
-//        let request: ImmunizationScheduleRequest = ImmunizationScheduleRequest(requestDate: Date(), birthDate: Date(), givenDoses: [GivenDose]())
-//
-//        XCTAssertEqual(Date(), request.birthDate)
-        
-        //let immunizationSchedule = scheduler.immunizationSchedule(request: request, response: response)[0]
-        
-        //immunizationSchedule.
-        // let scheduledDoses = immunizationSchedule[0]
-        
-        
-        
-        
-        
-        
-        // XCTAssertEqual(.HEP_A, response.immunizationSchedules[0].vaccineType)
-        // XCTAssertEqual(2, scheduledDoses.count)
-        
-        
-//        assertThat(hepADoses.size(), is(2));
-//        assertDose(hepADoses.get(0), DoseType.FIRST_DOSE, "1/1/2017", "1/1/2018", "1/1/2017", null, VaccineType.HEP_A, false);
-//        assertDose(hepADoses.get(1), DoseType.SECOND_DOSE, "7/1/2017", "7/1/2018", "7/1/2017", null, VaccineType.HEP_A, false);
         
         
         let cal = Calendar(identifier: .gregorian)
@@ -77,6 +45,15 @@ class HepADoseSchedulerTests: XCTestCase {
         print("Request Date: \(requestDate)")
         
         print("Request Date description: \(requestDate.description)")
+    }
+    
+    func assertDose(_ dose: ScheduledDose, start:(m:Int, d:Int, y:Int)) {
+        
+        print("assertDose \(dose)")
+        print(start)
+        let cal = Calendar.current
+        let expectedDate = cal.date(from: DateComponents(year: start.y, month: start.m, day: start.d))!
+        XCTAssertEqual(expectedDate, dose.earliestRecommendedDueDate)
     }
 
 

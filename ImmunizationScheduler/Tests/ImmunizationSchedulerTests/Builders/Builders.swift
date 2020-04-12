@@ -11,3 +11,8 @@ public func date(_ m: Int, _ d: Int, _ y: Int) -> Date {
     let cal = Calendar.current
     return cal.date(from: DateComponents(year: y, month: m, day: d))!
 }
+
+public func date(_ date: (m:Int, d:Int, y:Int)) -> Date {
+    let cal = Calendar.current
+    return cal.date(from: DateComponents(year: date.y, month: date.m, day: date.d))!
+}

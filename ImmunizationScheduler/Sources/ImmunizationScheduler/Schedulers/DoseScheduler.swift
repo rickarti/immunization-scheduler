@@ -10,4 +10,6 @@ import Foundation
 protocol DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule]
+    
+    
 }
