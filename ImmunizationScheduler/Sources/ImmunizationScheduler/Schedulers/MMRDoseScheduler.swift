@@ -10,6 +10,6 @@ import Foundation
 class MMRDoseScheduler: DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
-        return [ImmunizationSchedule(vaccineType: .MMR, scheduledDoses: [])]
+        return [ImmunizationSchedule(vaccineType: .MMR, givenDoses: [], scheduledDoses: [])]
     }
 }

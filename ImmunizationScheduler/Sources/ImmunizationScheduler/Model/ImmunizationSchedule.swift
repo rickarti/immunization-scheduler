@@ -11,6 +11,6 @@ struct ImmunizationSchedule {
     
     let vaccineType: VaccineType
     let seriesStatus: SeriesStatus = .notIndicated
-    let givenDoses: [GivenDose] = [GivenDose]()
+    let givenDoses: [GivenDose]
     let scheduledDoses:[ScheduledDose]
 }

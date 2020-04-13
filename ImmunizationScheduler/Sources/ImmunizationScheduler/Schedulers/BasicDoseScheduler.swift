@@ -11,7 +11,7 @@ class BasicDoseScheduler : DoseScheduler {
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
         
         
-        let immunizationSchedule: ImmunizationSchedule = ImmunizationSchedule(vaccineType: .HEP_A, scheduledDoses: [])
+        let immunizationSchedule: ImmunizationSchedule = ImmunizationSchedule(vaccineType: .HEP_A, givenDoses: [], scheduledDoses: [])
         return [immunizationSchedule]
     }
     

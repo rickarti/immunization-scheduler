@@ -10,7 +10,7 @@ import Foundation
 class DtapTdapDoseScheduler: DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
-        return [ImmunizationSchedule(vaccineType: .DTAP, scheduledDoses: []), ImmunizationSchedule(vaccineType: .TDAP, scheduledDoses: [])]
+        return [ImmunizationSchedule(vaccineType: .DTAP, givenDoses: [], scheduledDoses: []), ImmunizationSchedule(vaccineType: .TDAP, givenDoses: [], scheduledDoses: [])]
     }
     
 }

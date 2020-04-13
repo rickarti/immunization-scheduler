@@ -10,6 +10,6 @@ import Foundation
 class IPVDoseScheduler: DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
-        return [ImmunizationSchedule(vaccineType: .IPV, scheduledDoses: [])]
+        return [ImmunizationSchedule(vaccineType: .IPV, givenDoses: [], scheduledDoses: [])]
     }
 }

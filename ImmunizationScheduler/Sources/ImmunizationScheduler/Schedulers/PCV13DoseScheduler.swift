@@ -9,7 +9,7 @@ import Foundation
 class PCV13DoseScheduler: DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
-        return [ImmunizationSchedule(vaccineType: .PCV_13, scheduledDoses: [])]
+        return [ImmunizationSchedule(vaccineType: .PCV_13, givenDoses: [], scheduledDoses: [])]
     }
     
 }

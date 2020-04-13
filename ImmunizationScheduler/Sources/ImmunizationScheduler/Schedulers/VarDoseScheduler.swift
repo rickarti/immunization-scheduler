@@ -10,6 +10,6 @@ import Foundation
 class VarDoseScheduler: DoseScheduler {
     
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
-        return [ImmunizationSchedule(vaccineType: .VAR, scheduledDoses: [])]
+        return [ImmunizationSchedule(vaccineType: .VAR, givenDoses: [], scheduledDoses: [])]
     }
 }
