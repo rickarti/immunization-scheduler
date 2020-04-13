@@ -9,6 +9,16 @@ import Foundation
 
 class HepADoseScheduler: DoseScheduler {
     
+    static let HEP_A_FIRST_DOSE: ImmunizationDoseType = ImmunizationDoseType(vaccineType: .HEP_A, doseType: .firstDose,
+        startWindowRules:
+            [BirthIntervalRule(timeInterval: 12, intervalType: .month),
+             PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)])
+    
+    static let HEP_A_SECOND_DOSE: ImmunizationDoseType = ImmunizationDoseType(vaccineType: .HEP_A, doseType: .secondDose,
+        startWindowRules:
+            [PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)])
+    
+    
     func getVaccineType() -> VaccineType {
         return .HEP_A
     }
@@ -28,17 +38,6 @@ class HepADoseScheduler: DoseScheduler {
         let immunizationSchedule: ImmunizationSchedule = ImmunizationSchedule(vaccineType: self.getVaccineType(), givenDoses: givenDoses, scheduledDoses: scheduledDoses)
 
         return [immunizationSchedule];
-        
-        
-//        
-//        let cal = Calendar.current
-//        
-//        let firstDose = ScheduledDose(earliestRecommendedDueDate: cal.date(from: DateComponents(year: 2021, month: 1, day: 1))!)
-//        let secondDose = ScheduledDose(earliestRecommendedDueDate: cal.date(from: DateComponents(year: 2021, month: 7, day: 1))!)
-//        
-//        let schedDoses = ImmunizationSchedule(vaccineType: .HEP_A, givenDoses: [], scheduledDoses: [firstDose, secondDose])
-//        
-//        return [schedDoses]
     }
     
     func getGivenDoses(request: ImmunizationScheduleRequest, vaccineType: VaccineType) -> [GivenDose] {
