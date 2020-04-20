@@ -11,6 +11,6 @@ struct RuleParameters {
     
     let patientBirthDate: Date
     let givenDoses: [GivenDose]
-    let dueDoses: [ScheduledDose]
+    let dueDoses: [DueDose]
     let useMinimumDateToGive: Bool
 }

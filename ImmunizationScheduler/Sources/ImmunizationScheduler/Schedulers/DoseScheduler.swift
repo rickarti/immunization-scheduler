@@ -13,3 +13,10 @@ protocol DoseScheduler {
     
     
 }
+
+extension DoseScheduler {
+    func getMaxDate(birthDate: Date) -> Date? {
+        // return birthDate.plusYears(18);
+        return nil
+    }
+}

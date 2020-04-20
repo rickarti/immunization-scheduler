@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct ScheduledDose {
+struct DueDose {
 
     let earliestRecommendedDueDate: Date
 //    private Date latestRecommendedDueDate;
 //    private Date minimumDateToGive;
 //    private Date maximumDateToGive;
-//    private VaccineType vaccineType;
+    let vaccineType: VaccineType
 //    private Medication medication;
-//    private DoseType doseType;
+    let doseType: DoseType;
 //    private boolean isCatchup;
 }
