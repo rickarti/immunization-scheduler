@@ -13,5 +13,5 @@ protocol IntervalRule {
     var intervalType: Calendar.Component { get }
     var inclusive: Bool { get }
     
-    func apply(params: RuleParameters)
+    func apply(params: RuleParameters) -> Date
 }

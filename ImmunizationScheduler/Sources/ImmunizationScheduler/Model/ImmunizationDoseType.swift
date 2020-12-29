@@ -16,6 +16,7 @@ struct ImmunizationDoseType : Equatable {
     let vaccineType: VaccineType
     let doseType: DoseType
     let startWindowRules: [IntervalRule]
+    let endWindowRules: [IntervalRule]
     
     
     

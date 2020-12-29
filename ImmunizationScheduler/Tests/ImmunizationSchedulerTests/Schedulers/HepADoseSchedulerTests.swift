@@ -18,8 +18,8 @@ class HepADoseSchedulerTests: XCTestCase {
         XCTAssertEqual(hepASchedule.vaccineType, VaccineType.HEP_A)
         XCTAssertEqual(2, hepASchedule.scheduledDoses.count)
         
-        assertDose(hepASchedule.scheduledDoses[0], .firstDose, start:(1,1,2021), .HEP_A)
-        assertDose(hepASchedule.scheduledDoses[1], .secondDose , start:(7,1,2021), .HEP_A)
+        assertDose(hepASchedule.scheduledDoses[0], .firstDose, start:(1,1,2021), end:(1,1,2022), .HEP_A)
+        // assertDose(hepASchedule.scheduledDoses[1], .secondDose , start:(7,1,2021), end:(7,1,2022), .HEP_A)
 
 //            assertDose(hepADoses.get(0), DoseType.FIRST_DOSE, "1/1/2017", "1/1/2018", "1/1/2017", null, VaccineType.HEP_A, false);
 //            assertDose(hepADoses.get(1), DoseType.SECOND_DOSE, "7/1/2017", "7/1/2018", "7/1/2017", null, VaccineType.HEP_A, false);
@@ -47,18 +47,14 @@ class HepADoseSchedulerTests: XCTestCase {
         print("Request Date description: \(requestDate.description)")
     }
     
-    func assertDose(_ dose: DueDose, _ doseType: DoseType, start:(m:Int, d:Int, y:Int), _ vaccineType: VaccineType) {
-        
+    func assertDose(_ dose: DueDose, _ doseType: DoseType, start:(m:Int, d:Int, y:Int), end:(m:Int, d:Int, y:Int), _ vaccineType: VaccineType) {
+
         XCTAssertEqual(dose.doseType, doseType)
         XCTAssertEqual(dose.vaccineType, vaccineType)
-        
-//        print("assertDose \(dose)")
-//        print(start)
-//        let cal = Calendar.current
-//        let expectedDate = cal.date(from: DateComponents(year: start.y, month: start.m, day: start.d))!
-//        XCTAssertEqual(expectedDate, dose.earliestRecommendedDueDate)
+//        XCTAssertEqual(date(start), dose.earliestRecommendedDueDate)
+//        XCTAssertEqual(date(end), dose.latestRecommendedDueDatech)
     }
-
+    
 
 }
 

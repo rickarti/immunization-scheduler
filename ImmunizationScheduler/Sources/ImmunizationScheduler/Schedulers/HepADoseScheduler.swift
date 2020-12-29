@@ -17,11 +17,15 @@ class HepADoseScheduler: BasicDoseScheduler, BasicDoseSchedulerDelegate {
     static let HEP_A_FIRST_DOSE: ImmunizationDoseType = ImmunizationDoseType(vaccineType: .HEP_A, doseType: .firstDose,
         startWindowRules:
             [BirthIntervalRule(timeInterval: 12, intervalType: .month),
-             PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)])
+             PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)],
+        endWindowRules:
+            [BirthIntervalRule(timeInterval: 2, intervalType: .year)])
     
     static let HEP_A_SECOND_DOSE: ImmunizationDoseType = ImmunizationDoseType(vaccineType: .HEP_A, doseType: .secondDose,
         startWindowRules:
-            [PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)])
+            [PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)],
+        endWindowRules:
+        [PriorDoseIntervalRule(timeInterval: 18, intervalType: .month)])
     
     func getNextDoseType(currentDoseType: ImmunizationDoseType?, givenDoses: [GivenDose], birthDate: Date, requestDate: Date) -> ImmunizationDoseType? {
         if currentDoseType == nil {return HepADoseScheduler.HEP_A_FIRST_DOSE}
@@ -40,10 +44,10 @@ class HepADoseScheduler: BasicDoseScheduler, BasicDoseSchedulerDelegate {
 //    func scheduleDueDoses(patientBirthDate: Date, requestDate: Date, givenDoses: [GivenDose], scheduledDoses: inout [DueDose], maxDate: Date?) {
 ////
 ////        let cal = Calendar.current
-////        
+////
 ////        let firstDose = DueDose(earliestRecommendedDueDate: cal.date(from: DateComponents(year: 2021, month: 1, day: 1))!)
 ////        let secondDose = DueDose(earliestRecommendedDueDate: cal.date(from: DateComponents(year: 2021, month: 7, day: 1))!)
-////        
+////
 ////        DueDose(earliestRecommendedDueDate: <#T##Date#>, vaccineType: <#T##VaccineType#>, doseType: <#T##DoseType#>)
 ////
 ////        scheduledDoses.append(firstDose)

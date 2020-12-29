@@ -10,7 +10,7 @@ import Foundation
 struct DueDose {
 
     let earliestRecommendedDueDate: Date
-//    private Date latestRecommendedDueDate;
+    let latestRecommendedDueDate: Date
 //    private Date minimumDateToGive;
 //    private Date maximumDateToGive;
     let vaccineType: VaccineType

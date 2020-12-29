@@ -20,18 +20,14 @@ class BasicDoseScheduler : DoseScheduler {
         // var schedDoses: [DueDose] = []
         // List<DueDose> dueDoses = new ArrayList<>();
 
-        let doseScheduleIterator: DoseScheduleIterator =
-            self.validateGivenDoses(givenDoses, birthDate: request.birthDate, requestDate: request.requestDate)
+        let doseScheduleIterator: DoseScheduleIterator = self.validateGivenDoses(givenDoses, birthDate: request.birthDate, requestDate: request.requestDate)
         // DoseScheduleIterator doseScheduleIterator = validateDoses(givenDoses, dueDoses, birthDate, requestDate);
 
         let schedDoses: [DueDose] = self.scheduleDueDoses(doseScheduleIterator: doseScheduleIterator,
                               givenDoses: givenDoses, birthDate: request.birthDate, requestDate: request.requestDate)
         // scheduleDueDoses(birthDate, requestDate, doseScheduleIterator, givenDoses, dueDoses, getMaxDate(birthDate));
         
-        let immunizationSchedule: ImmunizationSchedule = ImmunizationSchedule(vaccineType: .HEP_A, givenDoses: givenDoses, scheduledDoses: schedDoses)
-        // ImmunizationSchedule immunizationSchedule = new ImmunizationSchedule(getVaccineType(), givenDoses, dueDoses);
-
-        return [immunizationSchedule]
+        return [ImmunizationSchedule(vaccineType: .HEP_A, givenDoses: givenDoses, scheduledDoses: schedDoses)]
     }
     
     func validateGivenDoses(_ givenDoses: [GivenDose], birthDate: Date, requestDate: Date) -> DoseScheduleIterator {
@@ -103,14 +99,40 @@ class BasicDoseScheduler : DoseScheduler {
 //                    doseWindow.isCatchup());
 //        }
         
-        return DueDose(earliestRecommendedDueDate: doseWindow.start, vaccineType: immunizationDoseType.vaccineType, doseType: immunizationDoseType.doseType)
+        return DueDose(earliestRecommendedDueDate: doseWindow.start, latestRecommendedDueDate: doseWindow.end, vaccineType: immunizationDoseType.vaccineType, doseType: immunizationDoseType.doseType)
     }
     
     func calculateDoseWindow(birthDate: Date, requestDate: Date, immunizationDoseType: ImmunizationDoseType, givenDoses: [GivenDose], pendingDoses: [DueDose]) -> DoseWindow {
 
         let minimumValidDueTime = birthDate
         let minimumDateToGive = birthDate
+        
+        // MIN VALID
+        let minimumValidRuleParameters: RuleParameters = RuleParameters(patientBirthDate: birthDate, givenDoses: givenDoses, dueDoses: pendingDoses, useMinimumDateToGive: true)
+        
+        for rule in immunizationDoseType.startWindowRules {
+            let ruleDate = rule.apply(params: minimumValidRuleParameters)
+            print(ruleDate)
+        }
+        
+//        for (IntervalRule rule : immunizationDoseType.getMinimumValidDoseRules()) {
+//            LocalDateTime ruleDate = rule.apply(minimumValidRuleParameters);
+//            if(ruleDate != null && ruleDate.minusDays(MINIMUM_DOSE_VALID_BUFFER_DAYS).isAfter(minimumValidDueTime)) {
+//                minimumDateToGive = ruleDate;
+//                minimumValidDueTime = ruleDate.minusDays(MINIMUM_DOSE_VALID_BUFFER_DAYS);
+//            }
+//        }
+        
+        
         let dueTime = birthDate
+        
+        
+        
+        
+        
+        
+        
+        
         
         return DoseWindow(minimumValidStart: minimumValidDueTime, minimumDateToGive: minimumDateToGive, maximumDateToGive: nil, start: dueTime, end: dueTime, isCatchup: false)
     }
