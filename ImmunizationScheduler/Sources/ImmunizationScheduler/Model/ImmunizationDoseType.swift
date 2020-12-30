@@ -12,6 +12,33 @@ struct ImmunizationDoseType : Equatable {
         return lhs.vaccineType == rhs.vaccineType && lhs.doseType == rhs.doseType
     }
     
+    init(vaccineType: VaccineType, doseType: DoseType, minimumValidDoseRules: [IntervalRule], startWindowRules: [IntervalRule], endWindowRule: IntervalRule, maximumDateToGiveRule: IntervalRule?) {
+        self.vaccineType = vaccineType
+        self.doseType = doseType
+        self.minimumValidDoseRules = minimumValidDoseRules
+        self.startWindowRules = startWindowRules
+        self.endWindowRule = endWindowRule
+        self.maximumDateToGiveRule = maximumDateToGiveRule
+    }
+    
+    init(vaccineType: VaccineType, doseType: DoseType, startWindowRules: [IntervalRule], endWindowRule: IntervalRule) {
+        self.vaccineType = vaccineType
+        self.doseType = doseType
+        self.minimumValidDoseRules = []
+        self.startWindowRules = startWindowRules
+        self.endWindowRule = endWindowRule
+        self.maximumDateToGiveRule = nil
+    }
+    
+    init(vaccineType: VaccineType, doseType: DoseType, minimumValidDoseRules: [IntervalRule], startWindowRules: [IntervalRule], endWindowRule: IntervalRule) {
+        self.vaccineType = vaccineType
+        self.doseType = doseType
+        self.minimumValidDoseRules = minimumValidDoseRules
+        self.startWindowRules = startWindowRules
+        self.endWindowRule = endWindowRule
+        self.maximumDateToGiveRule = nil
+    }
+    
     let vaccineType: VaccineType
     let doseType: DoseType
     

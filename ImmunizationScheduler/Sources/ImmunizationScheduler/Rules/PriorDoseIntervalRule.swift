@@ -12,8 +12,10 @@ struct PriorDoseIntervalRule : IntervalRule {
     var timeInterval: Int
     var intervalType: Calendar.Component
     var inclusive: Bool = true
+    var doseType: DoseType? = nil
     
     func apply(params: RuleParameters) -> Date {
+        // TODO: must implement this for anything to work
         return Date()
     }
 }
