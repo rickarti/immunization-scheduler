@@ -15,17 +15,21 @@ class HepADoseScheduler: BasicDoseScheduler, BasicDoseSchedulerDelegate {
     }
     
     static let HEP_A_FIRST_DOSE: ImmunizationDoseType = ImmunizationDoseType(vaccineType: .HEP_A, doseType: .firstDose,
-        startWindowRules:
-            [BirthIntervalRule(timeInterval: 12, intervalType: .month),
-             PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)],
-        endWindowRules:
-            [BirthIntervalRule(timeInterval: 2, intervalType: .year)])
+                             minimumValidDoseRules: [],
+                             startWindowRules:
+                                [BirthIntervalRule(timeInterval: 12, intervalType: .month),
+                                PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)],
+                             endWindowRule:
+                                BirthIntervalRule(timeInterval: 2, intervalType: .year),
+                             maximumDateToGiveRule: nil)
     
     static let HEP_A_SECOND_DOSE: ImmunizationDoseType = ImmunizationDoseType(vaccineType: .HEP_A, doseType: .secondDose,
-        startWindowRules:
-            [PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)],
-        endWindowRules:
-        [PriorDoseIntervalRule(timeInterval: 18, intervalType: .month)])
+                             minimumValidDoseRules: [],
+                             startWindowRules:
+                                [PriorDoseIntervalRule(timeInterval: 6, intervalType: .month)],
+                             endWindowRule:
+                                PriorDoseIntervalRule(timeInterval: 18, intervalType: .month),
+                             maximumDateToGiveRule: nil)
     
     func getNextDoseType(currentDoseType: ImmunizationDoseType?, givenDoses: [GivenDose], birthDate: Date, requestDate: Date) -> ImmunizationDoseType? {
         if currentDoseType == nil {return HepADoseScheduler.HEP_A_FIRST_DOSE}
@@ -33,9 +37,9 @@ class HepADoseScheduler: BasicDoseScheduler, BasicDoseSchedulerDelegate {
         return nil
     }
     
-//    func getVaccineType() -> VaccineType {
-//        return .HEP_A
-//    }
+    func getVaccineType() -> VaccineType {
+        return .HEP_A
+    }
     
     func getGivenDoses(request: ImmunizationScheduleRequest, vaccineType: VaccineType) -> [GivenDose] {
         return []

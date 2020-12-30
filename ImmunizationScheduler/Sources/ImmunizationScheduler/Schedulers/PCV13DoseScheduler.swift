@@ -12,4 +12,7 @@ class PCV13DoseScheduler: DoseScheduler {
         return [ImmunizationSchedule(vaccineType: .PCV_13, givenDoses: [], scheduledDoses: [])]
     }
     
+    func getVaccineType() -> VaccineType {
+        return .PCV_13
+    }
 }

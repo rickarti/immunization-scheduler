@@ -12,4 +12,8 @@ class IPVDoseScheduler: DoseScheduler {
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
         return [ImmunizationSchedule(vaccineType: .IPV, givenDoses: [], scheduledDoses: [])]
     }
+    
+    func getVaccineType() -> VaccineType {
+        return .IPV
+    }
 }

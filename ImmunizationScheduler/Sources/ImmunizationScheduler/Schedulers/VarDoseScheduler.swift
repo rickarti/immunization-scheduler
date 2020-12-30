@@ -12,4 +12,8 @@ class VarDoseScheduler: DoseScheduler {
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
         return [ImmunizationSchedule(vaccineType: .VAR, givenDoses: [], scheduledDoses: [])]
     }
+    
+    func getVaccineType() -> VaccineType {
+        return .VAR
+    }
 }

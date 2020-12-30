@@ -13,4 +13,7 @@ class HepBDoseScheduler: DoseScheduler {
         return [ImmunizationSchedule(vaccineType: .HEP_B, givenDoses: [], scheduledDoses: [])]
     }
     
+    func getVaccineType() -> VaccineType {
+        return .HEP_B
+    }
 }

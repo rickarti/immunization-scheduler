@@ -13,4 +13,6 @@ protocol BasicDoseSchedulerDelegate : class {
     
     func getNextDoseType(currentDoseType: ImmunizationDoseType?, givenDoses: [GivenDose], birthDate: Date, requestDate: Date) -> ImmunizationDoseType?
     
+    func getVaccineType() -> VaccineType
+    
 }

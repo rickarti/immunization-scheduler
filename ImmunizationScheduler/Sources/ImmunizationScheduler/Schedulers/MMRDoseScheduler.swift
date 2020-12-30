@@ -12,4 +12,8 @@ class MMRDoseScheduler: DoseScheduler {
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
         return [ImmunizationSchedule(vaccineType: .MMR, givenDoses: [], scheduledDoses: [])]
     }
+    
+    func getVaccineType() -> VaccineType {
+        return .MMR
+    }
 }

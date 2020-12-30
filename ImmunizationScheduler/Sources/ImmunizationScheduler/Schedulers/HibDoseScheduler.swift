@@ -13,4 +13,8 @@ class HibDoseScheduler: DoseScheduler {
         return [ImmunizationSchedule(vaccineType: .HI_B, givenDoses: [], scheduledDoses: [])]
     }
     
+    func getVaccineType() -> VaccineType {
+        return .HI_B
+    }
+    
 }

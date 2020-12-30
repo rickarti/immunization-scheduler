@@ -11,4 +11,8 @@ class MeningococcalDoseScheduler: DoseScheduler {
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule] {
         return [ImmunizationSchedule(vaccineType: .MENINGOCOCCAL, givenDoses: [], scheduledDoses: [])]
     }
+    
+    func getVaccineType() -> VaccineType {
+        return .MENINGOCOCCAL
+    }
 }

@@ -13,4 +13,5 @@ class DtapTdapDoseScheduler: DoseScheduler {
         return [ImmunizationSchedule(vaccineType: .DTAP, givenDoses: [], scheduledDoses: []), ImmunizationSchedule(vaccineType: .TDAP, givenDoses: [], scheduledDoses: [])]
     }
     
+    
 }

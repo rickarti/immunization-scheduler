@@ -27,4 +27,10 @@ struct CVXVaccineGroupMapper {
         CVXVaccineMapping(vaccineGroupCode: "139", vaccineCodes: ["139","09","113","138"]),
         CVXVaccineMapping(vaccineGroupCode: "152", vaccineCodes:["152","100","133"])
     ]
+    
+    static func getGivenDosesForTypes(request: ImmunizationScheduleRequest, vaccineTypes: [VaccineType]) -> [GivenDose] {
+        // TODO: implement this
+        return []
+    }
+
 }

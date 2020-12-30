@@ -12,11 +12,13 @@ struct ImmunizationDoseType : Equatable {
         return lhs.vaccineType == rhs.vaccineType && lhs.doseType == rhs.doseType
     }
     
-    
     let vaccineType: VaccineType
     let doseType: DoseType
+    
+    let minimumValidDoseRules: [IntervalRule]
     let startWindowRules: [IntervalRule]
-    let endWindowRules: [IntervalRule]
+    let endWindowRule: IntervalRule
+    let maximumDateToGiveRule: IntervalRule?
     
     
     
