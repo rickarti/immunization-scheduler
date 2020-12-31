@@ -29,8 +29,34 @@ struct CVXVaccineGroupMapper {
     ]
     
     static func getGivenDosesForTypes(request: ImmunizationScheduleRequest, vaccineTypes: [VaccineType]) -> [GivenDose] {
-        // TODO: implement this
-        return []
+
+        var dosesGivenForType: [GivenDose] = []
+        for givenDose in request.givenDoses {
+            if doseMatchesVaccineTypes(givenDose: givenDose, vaccineTypes: vaccineTypes) {
+                if !dosesGivenForType.contains(givenDose) {
+                    dosesGivenForType.append(givenDose)
+                }
+            }
+        }
+        return dosesGivenForType
+    }
+    
+    static func doseMatchesVaccineTypes(givenDose: GivenDose, vaccineTypes: [VaccineType]) -> Bool {
+        for vaccineType in vaccineTypes {
+            if doseMatchesVaccineType(givenDose: givenDose, vaccineType: vaccineType) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    static func doseMatchesVaccineType(givenDose: GivenDose, vaccineType: VaccineType) -> Bool {
+        for mapping in mappings {
+            if mapping.vaccineGroupCode == vaccineType.cvxGroupCode {
+                return mapping.vaccineCodes.contains(givenDose.cvxCode)
+            }
+        }
+        return false
     }
 
 }

@@ -9,6 +9,12 @@ import XCTest
 @testable import ImmunizationScheduler
 
 class CVXVaccineGroupMapperTests: XCTestCase {
+    
+    let ALL_VACCINE_CODES = ["01","02","03","08","09","10","15","16","17","20","21","22","32","42","31",
+                             "43","44","45","46","47","48","49","50","51","52","62","74","83","84","85","88","89","94","100","102","104",
+                             "106","107","108","110","111","113","114","115","116","118","119","120","122","123","125","126","127","128",
+                             "130","132","133","135","136","137","140","138","139","141","144","146","147","148","149","150","151","152",
+                             "153","155","158","160","161","165","166","168","170","171"]
 
     func testGetMappings_returnsValidMappings() {
         let mappings = CVXVaccineGroupMapper.mappings
@@ -61,6 +67,38 @@ class CVXVaccineGroupMapperTests: XCTestCase {
         
         XCTAssertEqual("152", mappings[15].vaccineGroupCode)
         XCTAssertEqual(["152","100","133"], mappings[15].vaccineCodes)
+    }
+    
+    func test_getGivenDosesForTypes_returnsCorrectDoses() {
+     
+        let request = requestWithAllVaccineCodes()
+        XCTAssertEqual(82, request.givenDoses.count)
         
+        XCTAssertEqual(11, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.HEP_B]).count)
+        XCTAssertEqual(4, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.RV]).count)
+        XCTAssertEqual(13, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.DTAP]).count)
+        XCTAssertEqual(14, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.HI_B]).count)
+        XCTAssertEqual(3, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.PCV_13]).count)
+        XCTAssertEqual(9, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.IPV]).count)
+        XCTAssertEqual(18, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.INFLUENZA]).count)
+        XCTAssertEqual(2, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.MMR]).count)
+        XCTAssertEqual(2, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.VAR]).count)
+        XCTAssertEqual(6, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.HEP_A]).count)
+        XCTAssertEqual(5, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.MENINGOCOCCAL]).count)
+        XCTAssertEqual(1, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.TDAP]).count)
+        XCTAssertEqual(4, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.HPV]).count)
+        XCTAssertEqual(0, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.MENINGOCOCCAL_B]).count)
+        XCTAssertEqual(0, CVXVaccineGroupMapper.getGivenDosesForTypes(request: request, vaccineTypes: [.PPSV23]).count)
+        
+        
+    }
+    
+    func requestWithAllVaccineCodes() -> ImmunizationScheduleRequest {
+        var builder = ImmunizationScheduleRequestBuilder(birthDate: date(10, 15, 2020), requestDate: date(12, 15, 2020))
+        
+        for code in ALL_VACCINE_CODES {
+            _ = builder.withGivenDose(givenDose: GivenDose(givenDate: date(12, 31, 2020), cvxCode: code))
+        }
+        return builder.build()
     }
 }
