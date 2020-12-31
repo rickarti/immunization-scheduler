@@ -22,7 +22,7 @@ class BasicDoseScheduler : DoseScheduler {
         let schedDoses: [DueDose] = self.scheduleDueDoses(doseScheduleIterator: doseScheduleIterator,
                               givenDoses: givenDoses, birthDate: request.birthDate, requestDate: request.requestDate)
         
-        return [ImmunizationSchedule(vaccineType: .HEP_A, givenDoses: givenDoses, scheduledDoses: schedDoses)]
+        return [ImmunizationSchedule(vaccineType: delegate.getVaccineType(), givenDoses: givenDoses, scheduledDoses: schedDoses)]
     }
     
     func validateGivenDoses(_ givenDoses: [GivenDose], birthDate: Date, requestDate: Date) -> DoseScheduleIterator {
