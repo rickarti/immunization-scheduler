@@ -8,14 +8,13 @@
 import Foundation
 
 protocol DoseScheduler {
-    
+       
     func immunizationSchedule(request: ImmunizationScheduleRequest) -> [ImmunizationSchedule]
 }
 
 extension DoseScheduler {
     func getMaxDate(birthDate: Date) -> Date? {
-        // return birthDate.plusYears(18);
-        return nil
+        return Calendar.current.date(byAdding: .year, value: 18, to: birthDate)
     }
     
     func getGivenDosesforType(request: ImmunizationScheduleRequest, vaccineType: VaccineType) -> [GivenDose] {

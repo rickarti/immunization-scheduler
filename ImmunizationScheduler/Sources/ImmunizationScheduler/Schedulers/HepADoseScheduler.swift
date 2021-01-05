@@ -40,4 +40,8 @@ class HepADoseScheduler: BasicDoseScheduler, BasicDoseSchedulerDelegate {
     func getGivenDoses(request: ImmunizationScheduleRequest, vaccineType: VaccineType) -> [GivenDose] {
         return []
     }
+    
+    override func calculateMaximumDateToGive(patientBirthDate: Date) -> Date? {
+        return nil
+    }
 }

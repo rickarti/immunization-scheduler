@@ -12,7 +12,7 @@ struct MedicationIntervalRule : IntervalRule {
     var intervalType: Calendar.Component
     var inclusive: Bool
     
-    func apply(params: RuleParameters)-> Date {
+    func apply(params: RuleParameters)-> Date? {
         return Date()
     }
 }

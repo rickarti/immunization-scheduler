@@ -44,7 +44,7 @@ struct ImmunizationDoseType : Equatable {
     
     let minimumValidDoseRules: [IntervalRule]
     let startWindowRules: [IntervalRule]
-    let endWindowRule: IntervalRule
+    let endWindowRule: IntervalRule?
     let maximumDateToGiveRule: IntervalRule?
     
     

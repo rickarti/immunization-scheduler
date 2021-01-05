@@ -11,10 +11,9 @@ struct DueDose {
 
     let earliestRecommendedDueDate: Date
     let latestRecommendedDueDate: Date
-//    private Date minimumDateToGive;
-//    private Date maximumDateToGive;
+    let minimumDateToGive: Date
+    let maximumDateToGive: Date?
     let vaccineType: VaccineType
-//    private Medication medication;
-    let doseType: DoseType;
-//    private boolean isCatchup;
+    let doseType: DoseType
+    let isCatchup: Bool
 }
